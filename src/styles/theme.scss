@@ -1,4 +1,8 @@
 @charset 'UTF-8';
+// TEMP: Hide broken preview bar for development
+#preview-bar-iframe {
+  display: none !important
+}
 
 /**
  * [replace with theme name] | Built with Slate
