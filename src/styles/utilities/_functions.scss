@@ -121,8 +121,7 @@ $base-font-size: 10px;
 
   @if $level == 1 {
     @each $key, $value in $map {
-      $output: $output +
-        '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
+      $output: $output + '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
     }
   } @else {
     $output: '(';
@@ -142,7 +141,7 @@ $base-font-size: 10px;
 
 /// Returns the spacing value for a given variant.
 ///
-/// @param {String} $variant - The key for the given variant.
+/// @param {Number} $variant - The key for the given variant.
 /// @return {Number} The spacing for the variant.
 
 @function spacing($variant: 1) {

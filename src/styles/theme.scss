@@ -5,16 +5,14 @@
 }
 
 /**
- * [replace with theme name] | Built with Slate
+ * [MadeBySeed] | Built with Slate
  */
 @import '~normalize.css/normalize';
 
-// Tools
-@import './tools/mixins';
-@import './tools/functions';
-
-// Settings
-@import './variables';
+// Utilities
+@import './utilities/mixins';
+@import './utilities/functions';
+@import './utilities/variables';
 
 // Core
 @import './core/forms';
@@ -39,5 +37,5 @@
 @import './sections/image-with-text';
 
 // Templates
-@import './templates/gift_card';
+@import './templates/gift-card';
 @import './templates/product';
