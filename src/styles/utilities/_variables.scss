@@ -44,31 +44,39 @@ $transition-duration: 250ms;
 $transition-timing: ease-in-out;
 
 // Grid
-$grid-medium: 46.85em;
-$grid-large: 61.85em;
-$grid-widescreen: 87.5em;
+$grid-small: 575px;
+$grid-medium: 768px;
+$grid-large: 990px;
+$grid-widescreen: 1200px;
 $grid-max-width: 73.75em;
 $grid-gutter: 30px;
 
 // Breakpoints used with the media-query mixin
+$xs: 'xs';
+$small-up: 'small-up';
 $small: 'small';
+$small-down: 'small-down';
+$medium-up: 'medium-up';
 $medium: 'medium';
 $medium-down: 'medium-down';
-$medium-up: 'medium-up';
+$large-up: 'large-up';
 $large: 'large';
 $large-down: 'large-down';
-$large-up: 'large-up';
+$medium-large: 'medium-large';
 $widescreen: 'widescreen';
 
 $breakpoints: (
-  $small '(max-width: #{$grid-medium - 1})',
-  $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
-  $medium-down '(max-width: #{$grid-large - 1})',
-  $medium-up '(min-width: #{$grid-medium})',
-  $large '(min-width: #{$grid-large}) and (max-width: #{$grid-widescreen - 1})',
-  $large-down '(max-width: #{$grid-widescreen - 1})',
-  $large-up '(min-width: #{$grid-large})',
-  $widescreen '(min-width: #{$grid-widescreen})'
+  $xs '(max-width: #{breakpoint($grid-small, -1px)})',
+  $small '(min-width: #{breakpoint($grid-small)}) and (max-width: #{breakpoint($grid-medium, -1px)})',
+  $small-down '(max-width: #{breakpoint($grid-medium, -1px)})',
+  $small-up '(min-width: #{breakpoint($grid-small)})',
+  $medium '(min-width: #{breakpoint($grid-medium)}) and (max-width: #{breakpoint($grid-large, -1px)})',
+  $medium-down '(max-width: #{breakpoint($grid-large, -1px)})',
+  $medium-up '(min-width: #{breakpoint($grid-medium)})',
+  $large '(min-width: #{breakpoint($grid-large)}) and (max-width: #{breakpoint($grid-widescreen, -1px)})',
+  $large-down '(max-width: #{breakpoint($grid-widescreen, -1px)})',
+  $large-up '(min-width: #{breakpoint($grid-large)})',
+  $widescreen '(min-width: #{breakpoint($grid-widescreen)})'
 );
 
 // Spacing

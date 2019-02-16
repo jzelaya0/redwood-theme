@@ -167,3 +167,25 @@ $base-font-size: 10px;
     @error 'Font size `#{$variant}` not found. Available font sizes: #{available-names($font-size-data)}';
   }
 }
+
+/// Returns the breakpoint value as an 'em' unit
+///
+/// @param {String} $value - breakpoint pixel value
+/// @return {String} Breakpoint em value
+
+@function breakpoint($value, $adjustment: 0) {
+  $adjusted-value: em($adjustment);
+
+  // Reduces chances to have a style void
+  // between two media queries
+  // See https://github.com/sass-mq/sass-mq/issues/6
+  @if ($adjustment == -1px) {
+    $adjusted-value: -0.01em;
+  } @else if ($adjustment == 1px) {
+    $adjusted-value: 0.01em;
+  }
+
+  $adjusted-value: em($value) + $adjusted-value;
+
+  @return $adjusted-value;
+}
