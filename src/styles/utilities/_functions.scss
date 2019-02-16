@@ -153,3 +153,17 @@ $base-font-size: 10px;
     @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}';
   }
 }
+
+/// Returns the font size for a given text style and variant.
+///
+/// @param {String} $variant [base] - The variant on the font-size.
+/// @return {Number} The font-size for the text-style.
+
+@function font-size($variant: base) {
+  @if map-has-key($font-size-data, $variant) {
+    $fetched-font-size: map-get($font-size-data, $variant);
+    @return $fetched-font-size;
+  } @else{
+    @error 'Font size `#{$variant}` not found. Available font sizes: #{available-names($font-size-data)}';
+  }
+}

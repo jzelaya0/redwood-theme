@@ -26,6 +26,19 @@ $font-body-weight: var(--font-body-weight);
 $font-body-style: var(--font-body-style);
 $font-body-bold-weight: var(--font-body-bold-weight);
 
+$font-size-data: (
+  base: rem(16px),
+  h1: rem(32px),
+  h2: rem(24px),
+  h3: rem(18px),
+  h4: rem(16px),
+  h5: rem(14px),
+  h6: rem(12px),
+  mobile-input: 1rem // To prevent zooming
+);
+
+$font-size-base: font-size(base);
+
 // Transitions
 $transition-duration: 250ms;
 $transition-timing: ease-in-out;
