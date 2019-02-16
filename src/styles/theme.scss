@@ -9,12 +9,12 @@
  */
 @import '~normalize.css/normalize';
 
-// Settings
-@import './variables';
-
 // Tools
 @import './tools/mixins';
 @import './tools/functions';
+
+// Settings
+@import './variables';
 
 // Core
 @import './core/forms';
