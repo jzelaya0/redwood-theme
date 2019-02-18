@@ -1,0 +1,101 @@
+.row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -$grid-gutter;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include media-query($small-down) {
+    margin-left: -$grid-gutter-mobile;
+  }
+}
+
+.col {
+  width: 100%;
+  max-width: 100%;
+  flex-basis: 100%;
+  flex-basis: 0;
+  flex-grow: 1;
+  padding-left: $grid-gutter;
+
+  @include media-query($small-down) {
+    padding-left: $grid-gutter-mobile;
+  }
+}
+
+/*============================================================================
+  Grid Columns
+    - Create width classes, prepended by the breakpoint name.
+==============================================================================*/
+@mixin grid-column-generator($breakpoint: '') {
+  .col--#{$breakpoint}1 {
+    max-width: percentage(1 / 12);
+    flex-basis: percentage(1 / 12);
+  }
+
+  .col--#{$breakpoint}2 {
+    max-width: percentage(2 / 12);
+    flex-basis: percentage(2 / 12);
+  }
+
+  .col--#{$breakpoint}3 {
+    max-width: percentage(3 / 12);
+    flex-basis: percentage(3 / 12);
+  }
+
+  .col--#{$breakpoint}4 {
+    max-width: percentage(4 / 12);
+    flex-basis: percentage(4 / 12);
+  }
+
+  .col--#{$breakpoint}5 {
+    max-width: percentage(5 / 12);
+    flex-basis: percentage(5 / 12);
+  }
+
+  .col--#{$breakpoint}6 {
+    max-width: percentage(6 / 12);
+    flex-basis: percentage(6 / 12);
+  }
+
+  .col--#{$breakpoint}7 {
+    max-width: percentage(7 / 12);
+    flex-basis: percentage(7 / 12);
+  }
+
+  .col--#{$breakpoint}8 {
+    max-width: percentage(8 / 12);
+    flex-basis: percentage(8 / 12);
+  }
+
+  .col--#{$breakpoint}9 {
+    max-width: percentage(9 / 12);
+    flex-basis: percentage(9 / 12);
+  }
+
+  .col--#{$breakpoint}10 {
+    max-width: percentage(10 / 12);
+    flex-basis: percentage(10 / 12);
+  }
+
+  .col--#{$breakpoint}11 {
+    max-width: percentage(11 / 12);
+    flex-basis: percentage(11 / 12);
+  }
+
+  .col--#{$breakpoint}12 {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+/*================ Build Base Grid Classes ================*/
+@include grid-column-generator();
+
+/*================ Build Responsive Grid Classes ================*/
+@each $breakpoint in $breakpoint-has-widths {
+  @include media-query($breakpoint) {
+    @include grid-column-generator('#{$breakpoint}-');
+  }
+}

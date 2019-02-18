@@ -43,26 +43,26 @@ $font-size-base: font-size(base);
 $transition-duration: 250ms;
 $transition-timing: ease-in-out;
 
-// Grid
+// Grid Breakpoints and Class Names - DO NOT change variable names
 $grid-small: 575px;
 $grid-medium: 768px;
 $grid-large: 990px;
 $grid-widescreen: 1200px;
 $grid-max-width: 73.75em;
-$grid-gutter: 30px;
+$grid-gutter: rem(30px);
+$grid-gutter-mobile: rem(20px);
 
 // Breakpoints used with the media-query mixin
 $xs: 'xs';
-$small-up: 'small-up';
-$small: 'small';
-$small-down: 'small-down';
-$medium-up: 'medium-up';
-$medium: 'medium';
-$medium-down: 'medium-down';
-$large-up: 'large-up';
-$large: 'large';
-$large-down: 'large-down';
-$medium-large: 'medium-large';
+$small-up: 'sm-up';
+$small: 'sm';
+$small-down: 'sm-down';
+$medium-up: 'md-up';
+$medium: 'md';
+$medium-down: 'md-down';
+$large-up: 'lg-up';
+$large: 'lg';
+$large-down: 'lg-down';
 $widescreen: 'widescreen';
 
 $breakpoints: (
@@ -78,6 +78,9 @@ $breakpoints: (
   $large-up '(min-width: #{breakpoint($grid-large)})',
   $widescreen '(min-width: #{breakpoint($grid-widescreen)})'
 );
+
+// Generate breakpoint-specific column widths classes
+$breakpoint-has-widths: ($xs, $small, $small-down, $small-up, $medium, $medium-down, $medium-up, $large, $large-down, $large-up);
 
 // Spacing
 $spacing-unit: 5px;
