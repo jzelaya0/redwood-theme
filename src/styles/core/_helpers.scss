@@ -70,3 +70,20 @@
   /* stylelint-disable declaration-no-important */
   display: none !important;
 }
+
+// Margin/Padding spacing helper classes
+@each $type in $spacing-data {
+  $i: index($spacing-data, $type) - 1;
+  $space: nth($type, 1);
+  $sides: (top, bottom, left, right);
+
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$i} {
+      margin-#{$side}: spacing($i);
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$i} {
+      padding-#{$side}: spacing($i);
+    }
+  }
+}
