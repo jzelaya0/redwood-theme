@@ -1,5 +1,10 @@
 .rte {
   margin: 0;
+  line-height: 1.25;
+
+  &:not(:last-child) {
+    margin-bottom: spacing(3);
+  }
 
   img {
     height: auto;
@@ -14,8 +19,34 @@
     margin: 0 0 ($grid-gutter / 2) $grid-gutter;
   }
 
+  // Match the styles from RTE nested lists
+  ul {
+    list-style: disc outside;
+
+    ul {
+      list-style: circle outside;
+
+      ul {
+        list-style: square outside;
+      }
+    }
+  }
+
+  li {
+    list-style: inherit;
+  }
+
   strong {
     font-weight: $font-body-bold-weight;
+  }
+}
+
+.text-center.rte,
+.text-center .rte {
+  ul,
+  ol {
+    margin-left: 0;
+    list-style-position: inside;
   }
 }
 
