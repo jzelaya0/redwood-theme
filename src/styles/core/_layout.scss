@@ -1,15 +1,57 @@
+/*================ General Layout ================*/
 html {
   background-color: $color-body;
   box-sizing: border-box;
 }
 
 *,
-*::before,
-*::after {
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
 body,
 html {
   height: 100%;
+}
+
+.container,
+.container-fluid {
+  @include clearfix();
+  padding: 0 $gutter;
+  margin: 0 auto;
+
+  @include media-query($small-down) {
+    padding: 0 $gutter-mobile;
+  }
+}
+
+.container {
+  max-width: $site-width;
+}
+
+/*================ Lists ================*/
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li {
+  list-style: none;
+}
+
+.list-inline {
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
 }
