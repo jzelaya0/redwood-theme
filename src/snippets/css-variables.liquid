@@ -1,4 +1,7 @@
 <style>
+  .myclass {
+    color: red;
+  }
   {{ settings.font_heading | font_face }}
   {{ settings.font_body | font_face }}
 
@@ -14,5 +17,6 @@
     --font-body-weight: {{ settings.font_body.weight }};
     --font-body-style: {{ settings.font_body.style }};
     --font-body-bold-weight: {{ font_body_bold.weight | default: 'bold' }};
+    --svg-icon-select: url("{{ 'icon-select.svg' | asset_url }}");
   }
 </style>

@@ -12,12 +12,15 @@ $placeholder-color-background: #f9fafb;
 $color-border: #ddd;
 
 // Helper colors for form error states
-$color-disabled: #000000;
-$color-disabled-border: #000000;
-$color-error: #ff6d6d;
-$color-error-bg: #ffffff;
-$color-success: #000000;
-$color-success-bg: #000000;
+$color-disabled: #eee;
+$color-disabled-border: #ccc;
+$color-error: #c0392b;
+$color-error-bg: #e74c3c;
+$color-success: #27ae60;
+$color-success-bg: #2ecc71;
+
+// Svgs
+$svg-icon-select: var(--svg-icon-select);
 
 // Typography
 $font-heading: var(--font-heading);
@@ -93,3 +96,7 @@ $spacing-data: (
   5: rem($spacing-unit * 5),
   6: rem($spacing-unit * 6)
 );
+
+// Forms
+$input-padding-top-bottom: rem(10px);
+$input-padding-left-right: rem(15px);

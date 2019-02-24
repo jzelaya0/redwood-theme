@@ -2,6 +2,17 @@ form {
   margin: 0;
 }
 
+input {
+  // prevent rounded corners on mobile devices
+  &[type="search"],
+  &[type="number"],
+  &[type="email"],
+  &[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+
 a,
 area,
 button,
@@ -17,7 +28,6 @@ textarea {
 input,
 textarea,
 select {
-  font-size: 1.6rem;
   max-width: 100%;
   border: 1px solid $color-border;
   border-radius: 0;
@@ -35,8 +45,29 @@ label[for] {
   cursor: pointer;
 }
 
+input,
+select,
 textarea {
-  min-height: 100px;
+  padding: $input-padding-top-bottom $input-padding-left-right;
+}
+
+textarea {
+  min-height: rem(100px);
+}
+
+/*================ Custom select style ================*/
+select {
+  @include prefix(appearance, none, webkit moz);
+  background: {
+    repeat: no-repeat;
+    position: right rem(10px) center;
+    color: transparent;
+    image: $svg-icon-select;
+  }
+  padding-right: rem(30px);
+  text-indent: rem(0.01px);
+  text-overflow: ellipsis;
+  cursor: pointer;
 }
 
 select::-ms-expand {
@@ -49,8 +80,48 @@ option {
   color: $color-body-text;
 }
 
-.input-error {
-  border-color: $color-error;
-  background-color: $color-error-bg;
-  color: $color-body-text;
+/*================ Form feedback messages ================*/
+input,
+select,
+textarea {
+  &.input-error {
+    box-shadow: 0 0 rem(1px) rem(1px) $color-error-bg;
+    color: $color-body;
+  }
+}
+
+/*================ Form feedback messages ================*/
+.form-message,
+.note {
+  padding: $input-padding-top-bottom $input-padding-left-right;
+  margin: 0 0 spacing(3);
+}
+
+.note {
+  border: 1px solid $color-border;
+}
+
+.form-message--success {
+  border: 1px solid $color-success;
+  color: $color-success;
+}
+
+.form-message--error {
+  border: 1px solid $color-error;
+  color: $color-error;
+
+  // Shopify generates ul element
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
