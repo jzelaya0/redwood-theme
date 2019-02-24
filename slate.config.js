@@ -6,6 +6,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   'cssVarLoader.liquidPath': ['src/snippets/css-variables.liquid'],
@@ -16,6 +17,28 @@ module.exports = {
         'lodash-es': path.resolve('./node_modules/lodash-es'),
       },
     },
+  },
+  'webpack.extend': (config) => {
+    return {
+      resolve: {
+        alias: {
+          jquery: path.resolve('./node_modules/jquery'),
+          'lodash-es': path.resolve('./node_modules/lodash-es'),
+        },
+      },
+      plugins: [
+        /**
+         * Export svgs into snippets folder         
+         */
+        new CopyWebpackPlugin([
+          {
+            from: path.resolve(config.get('paths.theme.src'), 'icons'),
+            ignore: ['.DS_Store'],
+            to: `${config.get('paths.theme.dist.snippets')}/[name].liquid`,
+          }
+        ]),
+      ],
+    }
   },
   'webpack.postcss.plugins': (config) => {
     const plugins = [autoprefixer];
