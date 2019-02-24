@@ -1,6 +1,12 @@
 // Text colors
 $color-body-text: #000;
 
+// Button colors
+$color-btn-primary: #000;
+$color-btn-primary-text: #fff;
+$color-btn-secondary: #fff;
+$color-btn-secondary-text: #000;
+
 // Background colors
 $color-body: #fff;
 
@@ -28,6 +34,9 @@ $font-body: var(--font-body);
 $font-body-weight: var(--font-body-weight);
 $font-body-style: var(--font-body-style);
 $font-body-bold-weight: var(--font-body-bold-weight);
+
+$font-weight-normal: normal;
+$font-weight-bold: bold;
 
 $font-size-data: (
   base: rem(16px),
