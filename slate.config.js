@@ -7,17 +7,10 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
   'cssVarLoader.liquidPath': ['src/snippets/css-variables.liquid'],
-  'webpack.extend': {
-    resolve: {
-      alias: {
-        jquery: path.resolve('./node_modules/jquery'),
-        'lodash-es': path.resolve('./node_modules/lodash-es'),
-      },
-    },
-  },
   'webpack.extend': (config) => {
     return {
       resolve: {
@@ -28,7 +21,7 @@ module.exports = {
       },
       plugins: [
         /**
-         * Export svgs into snippets folder         
+         * Export svgs into snippets folder
          */
         new CopyWebpackPlugin([
           {
@@ -37,6 +30,14 @@ module.exports = {
             to: `${config.get('paths.theme.dist.snippets')}/[name].liquid`,
           }
         ]),
+        /**
+         * Build notifications
+         */
+        new WebpackNotifierPlugin({
+          skipFirstNotification: true,
+          excludeWarnings: true,
+          alwaysNotify: false,          
+        }),
       ],
     }
   },
