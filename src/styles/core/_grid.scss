@@ -14,13 +14,13 @@
 .col {
   width: 100%;
   max-width: 100%;
-  flex-basis: 100%;
   flex-basis: 0;
   flex-grow: 1;
   padding-left: $grid-gutter;
 
   @include media-query($small-down) {
     padding-left: $grid-gutter-mobile;
+    flex-basis: 100%;
   }
 }
 
