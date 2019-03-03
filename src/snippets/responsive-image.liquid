@@ -23,6 +23,9 @@
 {%- comment -%} Added incremental number to avoid conflict styling code when the same images are using this snippet {%- endcomment -%}
 {%- capture responsive_image_counter %}{% increment responsive_image_counter %}{% endcapture -%}
 
+{%- assign default_max_width = max_width | default: image.width -%}
+{%- assign default_max_height = max_height | default: image.height -%}
+
 <style>
   {%- comment -%}
     The image aspect ratio tells us the orientation of the image:
@@ -31,10 +34,10 @@
     - greater than 1.0 is landscape
   {%- endcomment -%}
   {%- if image.aspect_ratio <= 1 -%}
-    {%- assign max_height_image = image.height | at_most: max_height -%}
+    {%- assign max_height_image = image.height | at_most: default_max_height -%}
     {%- assign max_width_image = max_height_image | times: image.aspect_ratio -%}
   {%- else -%}
-    {%- assign max_width_image = image.width | at_most: max_width -%}
+    {%- assign max_width_image = image.width | at_most: default_max_width -%}
     {%- assign max_height_image = max_width_image | divided_by: image.aspect_ratio -%}
   {%- endif -%}
 
