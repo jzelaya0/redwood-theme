@@ -66,11 +66,6 @@
   transition: none;
 }
 
-.hide {
-  /* stylelint-disable declaration-no-important */
-  display: none !important;
-}
-
 // Margin/Padding spacing helper classes
 @each $type in $spacing-data {
   $i: index($spacing-data, $type) - 1;
@@ -85,5 +80,16 @@
     .p#{str-slice($side, 0, 1)}-#{$i} {
       padding-#{$side}: spacing($i);
     }
+  }
+}
+
+// Build Responsive Helper Classes
+@include responsive-display-helper();
+@include responsive-text-align-helper();
+
+@each $breakpoint in $breakpoint-has-widths {
+  @include media-query($breakpoint) {
+    @include responsive-display-helper('--#{$breakpoint}');
+    @include responsive-text-align-helper('--#{$breakpoint}');
   }
 }

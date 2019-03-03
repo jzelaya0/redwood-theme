@@ -146,3 +146,43 @@
     }
   }
 }
+
+/**
+ * Build helper classes for responsive displays
+ *
+ * Accepts:
+ * - $breakpoint: {String} Media query breakpoint
+ *
+ */
+@mixin responsive-display-helper($breakpoint: '') {
+  /* stylelint-disable declaration-no-important */
+  .show#{$breakpoint} {
+    display: block !important;
+  }
+
+  .hide#{$breakpoint} {
+    display: none !important;
+  }
+}
+
+/**
+ * Build helper classes for responsive text alignment
+ *
+ * Accepts:
+ * - $breakpoint: {String} Media query breakpoint
+ *
+ */
+@mixin responsive-text-align-helper($breakpoint: '') {
+  /* stylelint-disable declaration-no-important */
+  .text-left#{$breakpoint} {
+    text-align: left !important;
+  }
+
+  .text-right#{$breakpoint} {
+    text-align: right !important;
+  }
+
+  .text-center#{$breakpoint} {
+    text-align: center !important;
+  }
+}
