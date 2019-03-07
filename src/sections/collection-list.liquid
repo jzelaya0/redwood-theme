@@ -6,33 +6,49 @@
   - Heading: title of the collection list section
   - Collection
 {%- endcomment -%}
-<section class="collection-list">
+{% case section.blocks.size %}
+  {% when 2 %}
+    {%- assign column_width = 'col--6' -%}
+  {% when 3 %}
+    {%- assign column_width = 'col--12 col--md-up-4' -%}
+  {% when 4 %}
+    {%- assign column_width = 'col--6 col--md-up-3' -%}
+  {% when 6 %}
+    {%- assign column_width = 'col--6 col--md-up-4' -%}
+{% endcase %}
+
+{%- assign collection_limit = section.settings.grid | times: section.settings.rows -%}
+
+<section class="container">
   {% if section.settings.title != blank %}
-    <h2 class="collection-list__title">{{ section.settings.title | escape }}</h2>
+    <h2 class="h1">{{ section.settings.title | escape }}</h2>
   {% endif %}
 
-  {% for block in section.blocks %}
-    {%- assign collection = collections[block.settings.collection] -%}
+  <ul class="row">
+    {% for block in section.blocks %}
+      {%- assign collection = collections[block.settings.collection] -%}
+    <li class="col {{ column_width }}">
+      <a href="{{ collection.url | default: "#" }}" class="collection-list-item" {{ block.shopify_attributes }}>
+        {% if collection.image != blank or collection.products.first != blank %}
+          {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
+          <div class="collection-list__image">
+            {% include 'responsive-image' with
+              image: image_object,
+              max_width: 480,
+              max_height: 480
+            %}
+          </div>
+        {% elsif collection == empty %}
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+        {% endif %}
 
-    <a href="{{ collection.url | default: "#" }}" class="collection-list-item" {{ block.shopify_attributes }}>
-      {% if collection.image != blank or collection.products.first != blank %}
-        {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
-        <div class="collection-list__image">
-          {% include 'responsive-image' with
-            image: image_object,
-            max_width: 480,
-            max_height: 480
-          %}
-        </div>
-      {% elsif collection == empty %}
-        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-      {% endif %}
-
-      {%- assign default_label = 'homepage.onboarding.collection_title' | t -%}
-      <p>{{ collection.title | default: default_label }}</p>
-    </a>
-  {% endfor %}
+        {%- assign default_label = 'homepage.onboarding.collection_title' | t -%}
+        <p class="text-center">{{ collection.title | default: default_label }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
 
   {% if section.blocks.size == 0 %}
     {% include 'no-blocks' %}
@@ -42,7 +58,7 @@
 {% schema %}
   {
     "name": "Collection list",
-    "max_blocks": 12,
+    "max_blocks": 6,
     "settings": [
       {
         "type": "text",

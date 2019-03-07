@@ -1,18 +1,3 @@
-.collection-list {
-  display: flex;
-  flex-wrap: wrap;  
-}
-
 .collection-list-item {
-  flex: 1 1 percentage(1 / 3);
-  height: 100%;
-  text-align: center;
-}
-
-.collection-list__image {
-  min-width: 320px;
-}
-
-.collection-list__title {
-  flex-basis: 100%;
+  display: block;
 }
