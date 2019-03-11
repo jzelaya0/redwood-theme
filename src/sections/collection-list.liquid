@@ -8,13 +8,15 @@
 {%- endcomment -%}
 {% case section.blocks.size %}
   {% when 2 %}
-    {%- assign column_width = 'col--6' -%}
+    {%- assign column_width = 'col--md-up-1-2' -%}
   {% when 3 %}
-    {%- assign column_width = 'col--12 col--md-up-4' -%}
+    {%- assign column_width = 'col--md-up-1-3' -%}
   {% when 4 %}
-    {%- assign column_width = 'col--6 col--md-up-3' -%}
+    {%- assign column_width = 'col--md-up-1-4' -%}
+  {% when 5 %}
+    {%- assign column_width = 'col--md-up-1-5' -%}
   {% when 6 %}
-    {%- assign column_width = 'col--6 col--md-up-4' -%}
+    {%- assign column_width = 'col--md-up-1-6' -%}  
 {% endcase %}
 
 {%- assign collection_limit = section.settings.grid | times: section.settings.rows -%}
