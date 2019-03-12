@@ -1,0 +1,33 @@
+<div class="product-card">
+  <a href="{{ product.url | within: collection }}" class="product-card__link">
+    {% if product.featured_image != blank %}
+      <div class="product-card__image">
+        {% include 'responsive-image' with
+          image: product.featured_image,
+          max_width: 480,
+          max_height: 480
+        %}
+      </div>
+    {% endif %}
+
+    <p class="product-card__title">{{ product.title | escape }}</p>
+    <p class="product-card__price">
+      {% if product.compare_at_price > product.price %}
+        {% if product.price_varies %}
+          {%- assign sale_price = product.price | money -%}
+          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+        {% else %}
+          {{ 'products.product.on_sale' | t }}
+          {{ product.price | money }}
+        {% endif %}
+      {% else %}
+        {% if product.price_varies %}
+          {%- assign price = product.price | money -%}
+          {{ 'products.product.from_text_html' | t: price: price }}
+        {% else %}
+          {{ product.price | money }}
+        {% endif %}
+      {% endif %}
+    </p>
+  </a>
+</div>
