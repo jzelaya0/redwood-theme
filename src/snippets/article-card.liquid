@@ -1,0 +1,48 @@
+<!-- /snippets/article-card.liquid -->
+<article class="article-card">
+  <a href="{{ article.url }}">
+    {% if article.image %}
+      {% include 'responsive-image' with
+          image: article.image,
+          max_width: 400,
+          max_height: 400
+      %}
+    {% endif %}
+    <h3>{{ article.title }}</h3>
+  </a>
+
+  <div>
+    {% if section.settings.blog_show_author %}
+      <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+    {% endif %}
+
+    {% if section.settings.blog_show_date %}
+      <p>
+        {{ article.published_at | time_tag: format: 'month_day_year' }}
+      </p>
+    {% endif %}
+
+    <div class="rte">
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt }}
+      {% else %}
+        {{ article.content | strip_html | truncate: 150 }}
+      {% endif %}
+    </div>
+
+    {% if article.tags.size > 0 %}
+      {%- comment -%}
+        The Tag link list functions as a list of content items.
+        Non-visual users will expect lists of content to appear
+        in a list structure, allowing for easier understanding and navigation of list items.
+      {%- endcomment -%}
+      <ul aria-label="{{ 'blogs.article.tags' | t }}">
+        {% for tag in article.tags %}
+          <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <a href="{{ article.url }}" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}">{{ 'blogs.article.read_more' | t }}</a>
+  </div>
+</article>

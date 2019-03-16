@@ -11,9 +11,19 @@
   - Show author
   - Show date
 {%- endcomment -%}
-<section>
+
+{% case section.settings.grid %}
+  {% when 2 %}
+    {%- assign column_width = 'col--md-up-1-2' -%}
+  {% when 3 %}
+    {%- assign column_width = 'col--md-up-1-3' -%}
+  {% when 4 %}
+    {%- assign column_width = 'col--md-up-1-4' -%}
+{% endcase %}
+
+<section class="container">
   {% if section.settings.title != blank %}
-    <h2>{{ section.settings.title | escape }}</h2>
+    <h2 class="h1">{{ section.settings.title | escape }}</h2>
   {% endif %}
 
   {%- assign blog = blogs[section.settings.blog] -%}
@@ -23,74 +33,15 @@
     as a list of content items. Non-visual users will expect lists of content
     to appear in a list structure, allowing for easier understanding and navigation of list items.
   {%- endcomment -%}
-  <ul class="blog-post">
+  <ul class="row">
     {% for article in blog.articles limit: section.settings.post_limit %}
-      <li class="blog-post__item">
-        {%- comment -%}
-          Due to accessibility requirements, we are regrouping all logical elements into the <a> element.
-          If a screen reader user is tabbing through the page, or browsing by links on the page with duplicated links,
-          they will appear identical which may lead to a confusing user experience.
-        {%- endcomment -%}
-        <a href="{{ article.url }}">
-          {% if article.image %}
-            {% include 'responsive-image' with
-                image: article.image,
-                max_width: 400,
-                max_height: 400
-            %}
-          {% endif %}
-          <h3>{{ article.title }}</h3>
-        </a>
-
-        <div>
-          {% if section.settings.blog_show_author %}
-            <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
-          {% endif %}
-
-          {% if section.settings.blog_show_date %}
-            <p>
-              {{ article.published_at | time_tag: format: 'month_day_year' }}
-            </p>
-          {% endif %}
-
-          <div>
-            {% if article.excerpt.size > 0 %}
-              {{ article.excerpt }}
-            {% else %}
-              {{ article.content | strip_html | truncate: 150 }}
-            {% endif %}
-          </div>
-
-          {% if article.tags.size > 0 %}
-            {%- comment -%}
-              The Tag link list functions as a list of content items.
-              Non-visual users will expect lists of content to appear
-              in a list structure, allowing for easier understanding and navigation of list items.
-            {%- endcomment -%}
-            <ul aria-label="{{ 'blogs.article.tags' | t }}">
-              {% for tag in article.tags %}
-                <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-
-          <a href="{{ article.url }}" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}">{{ 'blogs.article.read_more' | t }}</a>
-        </div>
+      <li class="col {{ column_width }}">
+        {%- include 'article-card' -%}
       </li>
     {% else %}
-      {% for i in (1..section.settings.post_limit) %}
-        <li class="blog-post__item">
-          <h3>
-            <a href="#">{{ 'homepage.onboarding.blog_title' | t }}</a>
-          </h3>
-
-          {% if section.settings.blog_show_author %}
-            <span>{{ 'homepage.onboarding.blog_author' | t }}</span>
-          {% endif %}
-
-          <div>{{ 'homepage.onboarding.blog_excerpt' | t }}</div>
-
-          <a href="#">{{ 'blogs.article.read_more' | t }}</a>
+      {% for i in (1..3) %}
+        <li class="col {{ column_width }}">
+          {%- include 'placeholder-article-item' -%}
         </li>
       {% endfor %}
     {% endfor %}
@@ -114,11 +65,20 @@
       },
       {
         "type": "range",
+        "id": "grid",
+        "label": "Articles per row",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
         "id": "post_limit",
         "label": "Posts",
         "min": 3,
         "max": 12,
-        "step": 3,
+        "step": 1,
         "default": 3
       },
       {

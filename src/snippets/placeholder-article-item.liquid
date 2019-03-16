@@ -1,0 +1,15 @@
+{% comment %}
+  Placeholder of a single article item
+{% endcomment %}
+
+<h3>
+  <a href="#">{{ 'homepage.onboarding.blog_title' | t }}</a>
+</h3>
+
+{% if section.settings.blog_show_author %}
+  <p>{{ 'homepage.onboarding.blog_author' | t }}</p>
+{% endif %}
+
+<div class="mb-3">{{ 'homepage.onboarding.blog_excerpt' | t }}</div>
+
+<a href="#">{{ 'blogs.article.read_more' | t }}</a>
