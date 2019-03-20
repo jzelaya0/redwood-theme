@@ -12,9 +12,9 @@
   - Button link: link of the button
 {%- endcomment -%}
 
-<section class="image-with-text">
+<section class="container">
   {% capture image_layout %}
-    <div class="image-with-text__image">
+    <div class="col col--md-up-1-2">
       {% if section.settings.image != blank %}
         {% include 'responsive-image' with
           image: section.settings.image,
@@ -27,27 +27,29 @@
     </div>
   {% endcapture %}
 
-  {% if section.settings.layout == 'left' %}
-    {{ image_layout }}
-  {% endif %}
+  <div class="row">
+    {% if section.settings.layout == 'left' %}
+      {{ image_layout }}
+    {% endif %}
 
-  <div class="image-with-text__text">
-    {% if section.settings.title != blank %}
-      <h2>{{ section.settings.title | escape }}</h2>
-    {% endif %}
-    {% if section.settings.text != blank %}
-      <div>{{ section.settings.text }}</div>
-    {% endif %}
-    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-      <a href="{{ section.settings.button_link }}">
-        {{ section.settings.button_label | escape }}
-      </a>
+    <div class="col col--md-up-1-2">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rte">{{ section.settings.text }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.layout == 'right' %}
+      {{ image_layout }}
     {% endif %}
   </div>
-
-  {% if section.settings.layout == 'right' %}
-    {{ image_layout }}
-  {% endif %}
 </section>
 
 {% schema %}
