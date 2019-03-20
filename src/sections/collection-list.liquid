@@ -16,14 +16,14 @@
   {% when 5 %}
     {%- assign column_width = 'col--md-up-1-5' -%}
   {% when 6 %}
-    {%- assign column_width = 'col--md-up-1-6' -%}  
+    {%- assign column_width = 'col--md-up-1-6' -%}
 {% endcase %}
 
 {%- assign collection_limit = section.settings.grid | times: section.settings.rows -%}
 
 <section class="container">
   {% if section.settings.title != blank %}
-    <h2 class="h1">{{ section.settings.title | escape }}</h2>
+    <h2>{{ section.settings.title | escape }}</h2>
   {% endif %}
 
   <ul class="row">

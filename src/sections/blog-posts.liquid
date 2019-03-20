@@ -23,7 +23,7 @@
 
 <section class="container">
   {% if section.settings.title != blank %}
-    <h2 class="h1">{{ section.settings.title | escape }}</h2>
+    <h2>{{ section.settings.title | escape }}</h2>
   {% endif %}
 
   {%- assign blog = blogs[section.settings.blog] -%}

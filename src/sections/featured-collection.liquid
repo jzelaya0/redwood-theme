@@ -23,7 +23,7 @@
 
 <section class="container featured-collection">
   {% if section.settings.title != blank %}
-    <h2 class="h1 featured-collection__title">{{ section.settings.title | escape }}</h2>
+    <h2 class="featured-collection__title">{{ section.settings.title | escape }}</h2>
   {% endif %}
 
   {%- assign collection = collections[section.settings.collection] -%}
