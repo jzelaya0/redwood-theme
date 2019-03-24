@@ -55,6 +55,34 @@ textarea {
   min-height: rem(100px);
 }
 
+/*================ Vertical forms ================*/
+.form-vertical {
+  input,
+  select,
+  textarea {
+    display: block;
+    width: 100%;
+    margin: 0 0 spacing(3);
+  }
+
+  [type="radio"],
+  [type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    margin-right: spacing();
+  }
+
+  [type="submit"],
+  .btn {
+    display: inline-block;
+    width: auto;
+  }
+
+  .btn {
+    margin-bottom: spacing(3);
+  }
+}
+
 /*================ Custom select style ================*/
 select {
   @include prefix(appearance, none, webkit moz);
