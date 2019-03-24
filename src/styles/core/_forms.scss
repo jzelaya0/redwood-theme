@@ -2,6 +2,18 @@ form {
   margin: 0;
 }
 
+label {
+  display: block;
+  margin-bottom: spacing();
+  font-size: $font-size-base;
+
+  [type="radio"] + &,
+  [type="checkbox"] + & {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
+
 input {
   // prevent rounded corners on mobile devices
   &[type="search"],
