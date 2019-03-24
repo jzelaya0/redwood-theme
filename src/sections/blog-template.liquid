@@ -1,0 +1,95 @@
+{% case section.settings.grid %}
+  {% when 2 %}
+    {%- assign column_width = 'col-1-2 col--md-up-1-2' -%}
+  {% when 3 %}
+    {%- assign column_width = 'col--md-up-1-3' -%}
+  {% when 4 %}
+    {%- assign column_width = 'col--md-up-1-4' -%}
+{% endcase %}
+
+{%- assign limit = section.settings.grid | times: section.settings.rows -%}
+
+{% paginate blog.articles by limit %}
+<div class="container">
+  {%- assign blog_title = blog.title -%}
+
+  {% if current_tags %}
+    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+  {% endif %}
+
+  <h1>{{ blog_title }}</h1>
+
+  {% if blog.all_tags.size > 0 %}
+    <h2>{{ 'blogs.general.categories' | t }}</h2>
+
+    <ul>
+      {% for tag in blog.all_tags %}
+
+        {% if current_tags contains tag %}
+          <li>{{ tag }}</li>
+        {% else %}
+          <li>{{ tag | link_to_tag: tag }}</li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+
+  {% comment %}
+
+  Article Previews
+  ====================
+  {% endcomment %}
+
+  <ul class="row">
+    {% for article in blog.articles %}
+      <li class="col {{ column_width }}">
+        {%- include 'article-card' -%}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+</div>
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog Page",
+    "settings": [
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Articles per row",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "label": "Rows",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
