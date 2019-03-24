@@ -123,7 +123,11 @@
     {% form 'new_comment', article, class: 'form-vertical' %}
       <h3>{{ 'blogs.comments.title' | t }}</h3>
 
-      {{ form.errors | default_errors }}
+      {% if form.errors %}
+      <div class="form-message form-message--error">
+        {{ form.errors | default_errors }}
+      </div>
+      {% endif %}
 
       <label for="CommentAuthor" class="label-hidden">
         {{ 'blogs.comments.name' | t }}
