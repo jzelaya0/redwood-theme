@@ -43,12 +43,6 @@
       },
       {
         "type": "checkbox",
-        "id": "social_sharing_blog",
-        "label": "Enable sharing for blog articles",
-        "default": true
-      },
-      {
-        "type": "checkbox",
         "id": "share_facebook",
         "label": "Share on Facebook",
         "default": true
