@@ -1,0 +1,33 @@
+.cart-table__item-quantity {
+  max-width: rem(50px);
+}
+
+// Table styles incorporated with the mobile responsive table layout
+@include media-query($medium-up) {
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: spacing(3);
+  }
+
+  .cart-table__row {
+    border-bottom: 1px solid $color-border;
+  }
+
+  .cart-table__row--header {
+    border-top: 1px solid $color-border;
+  }
+
+  .cart-table__header {
+    text-align: left;
+  }
+
+  .cart-table__header,
+  .cart-table__item {
+    padding: spacing(3) 0;
+  }
+
+  .cart-table__item-image {
+    max-width: rem(150px);
+  }
+}

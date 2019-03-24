@@ -66,6 +66,12 @@
   transition: none;
 }
 
+// Layout
+.full-width {
+  display: block;
+  width: 100%;
+}
+
 // Margin/Padding spacing helper classes
 @each $type in $spacing-data {
   $i: index($spacing-data, $type) - 1;
