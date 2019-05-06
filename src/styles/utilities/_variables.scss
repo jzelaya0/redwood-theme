@@ -9,6 +9,7 @@ $color-btn-secondary-text: #000;
 
 // Background colors
 $color-body: #fff;
+$color-drawer-background: rgba(0, 0, 0, 0.5);
 
 // Placeholders
 $placeholder-color-foreground: #161d25;
@@ -57,6 +58,7 @@ $transition-timing: ease-in-out;
 
 // Sizing Variables
 $site-width: rem(1180px);
+$drawer-width: rem(300px);
 $gutter: rem(30px);
 $gutter-mobile: rem(20px);
 $grid-gutter: rem(30px);
@@ -113,3 +115,9 @@ $spacing-data: (
 // Forms
 $input-padding-top-bottom: rem(10px);
 $input-padding-left-right: rem(15px);
+
+// z-index
+$z-index-drawer: 10;
+
+// Transitions
+$transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
