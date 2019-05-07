@@ -207,3 +207,5 @@ class Drawer {
     evt.stopPropagation();
   }
 }
+
+export default Drawer;
