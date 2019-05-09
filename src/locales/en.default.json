@@ -250,6 +250,9 @@
     }
   },
   "layout": {
+    "drawers": {
+      "browse": "Browse"
+    },
     "cart": {
       "title": "Cart",
       "items_count": {

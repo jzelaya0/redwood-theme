@@ -62,9 +62,11 @@
 
   {% section 'header' %}
 
-  <main role="main" id="MainContent">
-    {{ content_for_layout }}
-  </main>
+  <div id="PageContainer">
+    <main role="main" id="MainContent">
+      {{ content_for_layout }}
+    </main>
+  </div>
 
   {% section 'footer' %}
 

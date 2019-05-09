@@ -1,6 +1,6 @@
 /*================ Drawers ================*/
 // Overlay
-body {
+#PageContainer {
   &:after {
     content: "";
     visibility: hidden;
@@ -15,8 +15,7 @@ body {
     z-index: $z-index-drawer - 1;
     transition: $transition-drawer;
   }
-
-  &.js-drawer-open {
+  .js-drawer-open & {
     overflow: hidden;
 
     &:after {
@@ -94,7 +93,7 @@ body {
 }
 
 .drawer__title {
-  flex: 0 1 auto;
+  flex: 1 0 auto;
 }
 
 .drawer__close-btn {

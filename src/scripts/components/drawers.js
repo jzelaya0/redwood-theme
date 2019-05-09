@@ -58,6 +58,7 @@ class Drawer {
     // Selectors
     this.selectors = {
       body: document.querySelector('body'),
+      pageContainer: document.getElementById('PageContainer'),
       drawer: drawer,
       openBtn: document.querySelectorAll(this.options.openBtn),
       closeBtn: drawer.querySelector(this.options.closeBtn)
@@ -162,14 +163,14 @@ class Drawer {
   /** Attaches event listeners to body element */
   addPageEvents() {
     this.selectors.body.addEventListener('keyup', this);
-    this.selectors.body.addEventListener('click', this);
+    this.selectors.pageContainer.addEventListener('click', this);
     this.selectors.body.addEventListener('touchmove', this, {passive: false});
   }
 
   /** Detaches event listeners from body element */
   removePageEvents() {
     this.selectors.body.removeEventListener('keyup', this);
-    this.selectors.body.removeEventListener('click', this);
+    this.selectors.pageContainer.removeEventListener('click', this);
     this.selectors.body.removeEventListener('touchmove', this);
   }
 
