@@ -15,6 +15,7 @@ module.exports = {
     return {
       resolve: {
         alias: {
+          '@': path.resolve('src'),
           jquery: path.resolve('./node_modules/jquery'),
           'lodash-es': path.resolve('./node_modules/lodash-es'),
         },
@@ -36,7 +37,7 @@ module.exports = {
         new WebpackNotifierPlugin({
           skipFirstNotification: true,
           excludeWarnings: true,
-          alwaysNotify: false,          
+          alwaysNotify: false,
         }),
       ],
     }
