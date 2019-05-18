@@ -9,7 +9,7 @@ import '../../styles/theme.scss';
 import '../../styles/theme.scss.liquid';
 
 import {focusHash, bindInPageLinks} from '@shopify/theme-a11y';
-import {cookiesEnabled, getCart} from '@shopify/theme-cart';
+import {cookiesEnabled} from '@shopify/theme-cart';
 import Utils from '@/scripts/components/utils';
 import ShopifyAPI from '@/scripts/components/api';
 
