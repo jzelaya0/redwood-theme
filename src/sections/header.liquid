@@ -47,6 +47,11 @@
       </div>
     {% endif %}
 
+    <a href="#" class="js-drawer-open-left">
+      {%- include 'icon-hamburger' -%}
+      <span class="icon-fallback-text">{{ 'layout.navigation.toggle' | t }}</span>
+    </a>
+
     <a href="/cart">
       {% include 'icon-cart' %}
       {{ 'layout.cart.title' | t }}

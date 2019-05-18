@@ -8,6 +8,17 @@
     "theme_support_url": "https://github.com/Shopify/starter-theme/issues"
   },
   {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  },
+  {
     "name": "Typography",
     "settings": [
       {

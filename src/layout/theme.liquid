@@ -60,6 +60,24 @@
 
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
+  {% comment %}
+    Mobile Nav Drawer
+  {% endcomment %}
+  <div id="MobileNavDrawer" class="mobile-nav-drawer drawer drawer--left">
+    <div class="drawer__header">
+      <div class="drawer__title">
+        {{ 'layout.drawers.browse' | t }}
+      </div>
+      <button type="button" class="drawer__close-btn js-drawer-close">
+        {%- include 'icon-close' -%}
+        <span class="icon-fallback-text">{{ 'layout.navigation.collapse' | t }}</span>
+      </button>
+    </div>
+    <div class="drawer__body">
+      {%- include 'site-nav-mobile' -%}
+    </div>
+  </div>
+
   {% section 'header' %}
 
   <div id="PageContainer">

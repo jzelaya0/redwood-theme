@@ -1,0 +1,43 @@
+<nav role="navigation">
+  <ul id="MobileNav" class="mobile-nav">
+    {% for link in linklists[settings.main_linklist].links %}
+      <li class="mobile-nav__item{% if link.links != blank %} mobile-nav__item--has-submenu{% endif %}">
+        {% if link.links != blank %}
+          <button type="button" class="mobile-nav__toggle" data-mobile-nav-toggle>
+            <span>{{ link.title | escape }}</span>
+            {% include 'icon-chevron-down' %}
+          </button>
+          <ul class="mobile-nav__submenu">
+            {% for childlink in link.links %}
+              <li class="mobile-nav__item{% if childlink.links != blank %} mobile-nav__item--has-submenu{% endif %}">
+                {% if childlink.links != blank %}
+                  <button type="button" class="mobile-nav__toggle mobile-nav__toggle--grandchildren" data-mobile-nav-toggle>
+                    <span>{{ childlink.title | escape }}</span>
+                    {% include 'icon-chevron-down' %}
+                  </button>
+                  <ul class="mobile-nav__submenu">
+                    {% for grandchildlink in childlink.links %}
+                    <li class="mobile-nav__item">
+                      <a href="{{ grandchildlink.url }}" class="mobile-nav__link mobile-nav__link--grandchild{% if grandchildlink.active %} mobile-nav__link--active{% endif %}">
+                        {{ grandchildlink.title | escape }}
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <a href="{{ childlink.url }}" class="mobile-nav__link mobile-nav__link--child{% if childlink.active %} mobile-nav__link--active{% endif %}">
+                    {{ childlink.title | escape }}
+                  </a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <a href="{{ link.url }}" class="mobile-nav__link{% if link.active %} mobile-nav__link--active{% endif %}">
+            {{ link.title | escape }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
