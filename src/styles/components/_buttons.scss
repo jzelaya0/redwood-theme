@@ -8,8 +8,8 @@
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
-  background-color: $color-btn-primary;
-  color: $color-btn-primary-text;
+  background-color: $color-primary;
+  color: $white;
   font-weight: $font-weight-bold;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -21,15 +21,15 @@
 }
 
 .btn--secondary {
-  color: $color-btn-secondary-text;
-  background-color: $color-btn-secondary;
+  color: $white;
+  background-color: $color-secondary;
 }
 
 .btn--link {
   background-color: transparent;
   border: 0;
   margin: 0;
-  color: $color-body-text;
+  color: $black;
   text-align: left;
 
   .icon {
