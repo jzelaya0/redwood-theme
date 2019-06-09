@@ -45,14 +45,11 @@ $base-font-size: 10px;
 
   @if $value == 0 {
     @return 0;
-  } @else
-  if $unit == 'rem' {
+  } @else if $unit == 'rem' {
     @return $value;
-  } @else
-  if $unit == 'px' {
+  } @else if $unit == 'px' {
     @return $value / $base-font-size * 1rem;
-  } @else
-  if $unit == 'em' {
+  } @else if $unit == 'em' {
     @return $unit / 1em * 1rem;
   } @else {
     @error 'Value must be in px, em, or rem.';
@@ -68,14 +65,11 @@ $base-font-size: 10px;
 
   @if $value == 0 {
     @return 0;
-  } @else
-  if $unit == 'px' {
+  } @else if $unit == 'px' {
     @return $value;
-  } @else
-  if $unit == 'em' {
+  } @else if $unit == 'em' {
     @return ($value / 1em) * $base-font-size;
-  } @else
-  if $unit == 'rem' {
+  } @else if $unit == 'rem' {
     @return ($value / 1rem) * $base-font-size;
   } @else {
     @error 'Value must be in rem, em, or px.';
@@ -92,14 +86,11 @@ $base-font-size: 10px;
 
   @if $value == 0 {
     @return 0;
-  } @else
-  if $unit == 'em' {
+  } @else if $unit == 'em' {
     @return $value;
-  } @else
-  if $unit == 'rem' {
+  } @else if $unit == 'rem' {
     @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
-  } @else
-  if $unit == 'px' {
+  } @else if $unit == 'px' {
     @return $value / $default-browser-font-size * 1em;
   } @else {
     @error 'Value must be in px, rem, or em.';
