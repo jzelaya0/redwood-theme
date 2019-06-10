@@ -1,4 +1,5 @@
 @include media-query($small-down) {
+
   .responsive-table {
     width: 100%;
 
@@ -26,7 +27,7 @@
       text-align: right;
     }
 
-    td::before {
+    td:before {
       content: attr(data-label);
       float: left;
       padding-right: 10px;
@@ -41,7 +42,7 @@
     margin-top: 10px;
     padding-top: $grid-gutter / 2;
 
-    &::after {
+    &:after {
       content: '';
       position: absolute;
       top: 0;

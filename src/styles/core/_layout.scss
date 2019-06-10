@@ -1,12 +1,12 @@
-/*================ General Layout ================*/
+/***************** General Layout *****************/
 html {
   background-color: $color-body;
   box-sizing: border-box;
 }
 
 *,
-*::after,
-*::before {
+*:after,
+*:before {
   box-sizing: border-box;
 }
 
@@ -17,7 +17,7 @@ html {
 
 .container,
 .container-fluid {
-  @include clearfix();
+  @include clearfix('');
   padding: 0 $gutter;
   margin: 0 auto;
 
@@ -30,7 +30,7 @@ html {
   max-width: $site-width;
 }
 
-/*================ Lists ================*/
+/***************** Lists *****************/
 ol,
 ul {
   margin: 0;

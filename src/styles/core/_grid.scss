@@ -23,10 +23,10 @@
   }
 }
 
-/*============================================================================
+/*
   Grid Columns
-    - Create width classes, prepended by the breakpoint name.
-==============================================================================*/
+  - Create width classes, prepended by the breakpoint name.
+*/
 @mixin grid-column-generator($breakpoint: '') {
   // Whole
   .col--#{$breakpoint}1 {
@@ -89,11 +89,6 @@
   }
 
   // Sixths
-  .col--#{$breakpoint}1-6 {
-    max-width: percentage(1 / 6);
-    flex-basis: percentage(1 / 6);
-  }
-
   .col--#{$breakpoint}1-6 {
     max-width: percentage(1 / 6);
     flex-basis: percentage(1 / 6);
@@ -213,10 +208,10 @@
   }
 }
 
-/*================ Build Base Grid Classes ================*/
-@include grid-column-generator();
+/***************** Build Base Grid Classes *****************/
+@include grid-column-generator('');
 
-/*================ Build Responsive Grid Classes ================*/
+/***************** Build Responsive Grid Classes *****************/
 @each $breakpoint in $breakpoint-has-widths {
   @include media-query($breakpoint) {
     @include grid-column-generator('#{$breakpoint}-');

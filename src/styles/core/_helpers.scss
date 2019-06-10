@@ -34,6 +34,7 @@
 
 // Only show when JS is supported
 .js {
+
   .no-js & {
     display: none;
   }
@@ -50,6 +51,7 @@
 
 // Only show when browser cookies are supported
 .supports-cookies {
+
   html.supports-no-cookies & {
     display: none;
   }
@@ -79,6 +81,7 @@
   $sides: (top, bottom, left, right);
 
   @each $side in $sides {
+
     .m#{str-slice($side, 0, 1)}-#{$i} {
       margin-#{$side}: spacing($i);
     }
@@ -90,8 +93,8 @@
 }
 
 // Build Responsive Helper Classes
-@include responsive-display-helper();
-@include responsive-text-align-helper();
+@include responsive-display-helper('');
+@include responsive-text-align-helper('');
 
 @each $breakpoint in $breakpoint-has-widths {
   @include media-query($breakpoint) {

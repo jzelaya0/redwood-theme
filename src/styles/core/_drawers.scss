@@ -1,6 +1,7 @@
-/*================ Drawers ================*/
+/***************** Drawers *****************/
 // Overlay
-#PageContainer {
+.page-container {
+
   &:after {
     content: "";
     visibility: hidden;
@@ -15,6 +16,7 @@
     z-index: $z-index-drawer - 1;
     transition: $transition-drawer;
   }
+
   .js-drawer-open & {
     overflow: hidden;
 

@@ -43,11 +43,18 @@ select {
   max-width: 100%;
   border: 1px solid $color-border;
   border-radius: 0;
+  padding: $input-padding-top-bottom $input-padding-left-right;
 
   &[disabled] {
     border-color: $color-disabled-border;
     background-color: $color-disabled;
     cursor: default;
+  }
+
+  // Error Feedback
+  &.input-error {
+    box-shadow: 0 0 rem(1px) rem(1px) $color-error-bg;
+    color: $color-body;
   }
 }
 
@@ -57,18 +64,13 @@ label[for] {
   cursor: pointer;
 }
 
-input,
-select,
-textarea {
-  padding: $input-padding-top-bottom $input-padding-left-right;
-}
-
 textarea {
   min-height: rem(100px);
 }
 
-/*================ Vertical forms ================*/
+/***************** Vertical forms *****************/
 .form-vertical {
+
   input,
   select,
   textarea {
@@ -95,7 +97,7 @@ textarea {
   }
 }
 
-/*================ Custom select style ================*/
+/***************** Custom select style *****************/
 select {
   @include prefix(appearance, none, webkit moz);
   background: {
@@ -120,17 +122,7 @@ option {
   color: $color-body-text;
 }
 
-/*================ Form feedback messages ================*/
-input,
-select,
-textarea {
-  &.input-error {
-    box-shadow: 0 0 rem(1px) rem(1px) $color-error-bg;
-    color: $color-body;
-  }
-}
-
-/*================ Form feedback messages ================*/
+/***************** Form feedback messages *****************/
 .form-message,
 .note {
   padding: $input-padding-top-bottom $input-padding-left-right;

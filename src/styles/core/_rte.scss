@@ -20,6 +20,7 @@
   }
 
   // Match the styles from RTE nested lists
+  /* stylelint-disable */
   ul {
     list-style: disc outside;
 
@@ -31,7 +32,7 @@
       }
     }
   }
-
+  /* stylelint-enable */
   li {
     list-style: inherit;
   }
@@ -43,6 +44,7 @@
 
 .text-center.rte,
 .text-center .rte {
+
   ul,
   ol {
     margin-left: 0;

@@ -4,6 +4,7 @@
 
 // Table styles incorporated with the mobile responsive table layout
 @include media-query($medium-up) {
+
   .cart-table {
     width: 100%;
     border-collapse: collapse;

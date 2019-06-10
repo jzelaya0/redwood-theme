@@ -1,8 +1,11 @@
 @charset 'UTF-8';
+
 // TEMP: Hide broken preview bar for development
+/* stylelint-disable */
 #preview-bar-iframe {
-  display: none !important
+  display: none !important;
 }
+/* stylelint-enable */
 
 /**
  * [MadeBySeed] | Built with Slate

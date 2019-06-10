@@ -57,7 +57,8 @@
  * }
  */
 @mixin clearfix() {
-  &::after {
+
+  &:after {
     content: '';
     display: table;
     clear: both;
@@ -129,17 +130,13 @@
   @each $prefix in $prefixes {
     @if $prefix == webkit {
       -webkit-#{$property}: $value;
-    } @else
-    if $prefix == moz {
+    } @else if $prefix == moz {
       -moz-#{$property}: $value;
-    } @else
-    if $prefix == ms {
+    } @else if $prefix == ms {
       -ms-#{$property}: $value;
-    } @else
-    if $prefix == o {
+    } @else if $prefix == o {
       -o-#{$property}: $value;
-    } @else
-    if $prefix == spec {
+    } @else if $prefix == spec {
       #{$property}: $value;
     } @else {
       @warn 'Unrecognized prefix: #{$prefix}';
@@ -154,8 +151,9 @@
  * - $breakpoint: {String} Media query breakpoint
  *
  */
+/* stylelint-disable declaration-no-important */
 @mixin responsive-display-helper($breakpoint: '') {
-  /* stylelint-disable declaration-no-important */
+
   .show#{$breakpoint} {
     display: block !important;
   }
@@ -173,7 +171,7 @@
  *
  */
 @mixin responsive-text-align-helper($breakpoint: '') {
-  /* stylelint-disable declaration-no-important */
+
   .text-left#{$breakpoint} {
     text-align: left !important;
   }
@@ -186,3 +184,4 @@
     text-align: center !important;
   }
 }
+/* stylelint-enable declaration-no-important */
