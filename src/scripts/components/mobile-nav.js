@@ -1,4 +1,4 @@
-import Drawer from '@/scripts/components/drawers'
+import Drawer from '@/scripts/components/drawers';
 
 /**
  * Mobile Nav Script
@@ -10,16 +10,16 @@ import Drawer from '@/scripts/components/drawers'
 // Selectors
 const selectors = {
   mobileNavId: 'MobileNav',
-  mobileNavToggle: '[data-mobile-nav-toggle]'
+  mobileNavToggle: '[data-mobile-nav-toggle]',
 };
 
 const cssClasses = {
   activeBtn: 'is-active',
-  openMenu: 'is-open'
+  openMenu: 'is-open',
 };
 
 // Init mobile nav drawer
-const mobileNavDrawer = new Drawer('MobileNavDrawer', {position: 'left'});
+new Drawer('MobileNavDrawer', {position: 'left'});
 
 // Cached Selectors
 const mobileNav = document.getElementById(selectors.mobileNavId);
@@ -31,7 +31,7 @@ mobileNavToggle.forEach((button) => {
 });
 
 function toggleSubMenu(evt) {
-  const button = evt.currentTarget
+  const button = evt.currentTarget;
   const subMenu = button.nextElementSibling;
 
   button.classList.toggle(cssClasses.activeBtn);

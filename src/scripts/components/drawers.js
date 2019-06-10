@@ -14,7 +14,7 @@ import {trapFocus, removeTrapFocus} from '@shopify/theme-a11y';
 
 const cssClases = {
   drawerOpen: 'drawer--open',
-  drawerOpenOverlay: 'js-drawer-open'
+  drawerOpenOverlay: 'js-drawer-open',
 };
 
 class Drawer {
@@ -37,31 +37,31 @@ class Drawer {
     }
 
     // Defaults
-    let defaults = {
+    const defaults = {
       position: 'left',
       get openBtn() {
-        return '.js-drawer-open-' + this.position;
+        return `.js-drawer-open-${this.position}`;
       },
       closeBtn: '.js-drawer-close',
       onDrawerOpen: null,
       onDrawerClose: null,
-      ...options
+      ...options,
     };
 
     // Settings
     this.options = defaults;
     // this.position = position;
     this.state = {
-      drawerIsOpen: false
+      drawerIsOpen: false,
     };
 
     // Selectors
     this.selectors = {
       body: document.querySelector('body'),
       pageContainer: document.getElementById('PageContainer'),
-      drawer: drawer,
+      drawer,
       openBtn: document.querySelectorAll(this.options.openBtn),
-      closeBtn: drawer.querySelector(this.options.closeBtn)
+      closeBtn: drawer.querySelector(this.options.closeBtn),
     };
 
     this.initDrawer();
@@ -89,11 +89,12 @@ class Drawer {
 
     if (evt && evt.stopPropagation) {
       evt.stopPropagation();
-      this.selectors.activeSource = evt.currentTarget
+      this.selectors.activeSource = evt.currentTarget;
     }
 
     if (this.state.drawerIsOpen && !externalCall) {
-      return this.closeDrawer();
+      this.closeDrawer();
+      return;
     }
 
     // Open drawer
@@ -132,10 +133,10 @@ class Drawer {
     // Unbind page event handlers
     this.removePageEvents();
 
-    removeTrapFocus(this.selectors.drawer)
+    removeTrapFocus(this.selectors.drawer);
   }
 
-  /*============================================================================
+  /*= ===========================================================================
     Page Event Handling
   ==============================================================================*/
   initCustomEvents() {
@@ -143,8 +144,8 @@ class Drawer {
       this.drawerOpenedEvt = new CustomEvent('drawerOpened', {
         detail: {
           position: this.position,
-          drawerId: this.selectors.drawer.id
-        }
+          drawerId: this.selectors.drawer.id,
+        },
       });
       document.addEventListener('drawerOpened', this.options.onDrawerOpen);
     }
@@ -153,8 +154,8 @@ class Drawer {
       this.drawerClosedEvt = new CustomEvent('drawerClosed', {
         detail: {
           position: this.position,
-          drawerId: this.selectors.drawer
-        }
+          drawerId: this.selectors.drawer,
+        },
       });
       document.addEventListener('drawerClosed', this.options.onDrawerClose);
     }
@@ -198,7 +199,7 @@ class Drawer {
     }
   }
 
-  onPageClick(evt) {
+  onPageClick() {
     this.closeDrawer();
     return false;
   }
