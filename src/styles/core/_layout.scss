@@ -17,7 +17,7 @@ html {
 
 .container,
 .container-fluid {
-  @include clearfix('');
+  @include clearfix;
   padding: 0 $gutter;
   margin: 0 auto;
 
