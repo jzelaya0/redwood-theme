@@ -8,6 +8,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const styleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   'cssVarLoader.liquidPath': ['src/snippets/css-variables.liquid'],
@@ -39,6 +40,13 @@ module.exports = {
           excludeWarnings: true,
           alwaysNotify: false,
         }),
+
+        new styleLintPlugin({
+          configFile: '.stylelintrc',
+          context: path.resolve(config.get('paths.theme.src'), 'styles'),
+          failOnError: false,
+          quiet: false,
+        })
       ],
     }
   },

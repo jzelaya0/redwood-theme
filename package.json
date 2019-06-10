@@ -21,6 +21,7 @@
     "eslint-plugin-shopify": "^19.0.0",
     "stylelint-config-prettier": "^3.0.4",
     "stylelint-config-shopify": "^5.0.0",
+    "stylelint-webpack-plugin": "^0.10.5",
     "webpack-notifier": "^1.7.0"
   },
   "dependencies": {
