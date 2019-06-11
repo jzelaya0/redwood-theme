@@ -4,7 +4,8 @@
     "plugin:shopify/jquery"
   ],
   "env": {
-    "jest": true
+    "jest": true,
+    "browser": true
   },
   "rules": {
     "babel/no-invalid-this": 0,
@@ -20,7 +21,6 @@
     "window": true,
     "Shopify": true,
     "theme": true,
-    "CustomEvent": true
   },
     "settings": {
     "import/resolver": {

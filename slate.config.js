@@ -48,6 +48,15 @@ module.exports = {
           quiet: false,
         })
       ],
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ["babel-loader", "eslint-loader"]
+          }
+        ]
+      }
     }
   },
   'webpack.postcss.plugins': (config) => {
