@@ -16,6 +16,7 @@ npm-debug.log
 src/config/settings_data.json
 .env
 .env.*
+!.env.example
 theme.lock
 
 
