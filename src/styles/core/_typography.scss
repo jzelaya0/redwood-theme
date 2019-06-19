@@ -86,9 +86,10 @@ h6,.h6 {
 }
 
 p {
+  margin: 0 0 spacing(3);
 
-  &:not(:last-child) {
-    margin: 0 0 spacing(3);
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
