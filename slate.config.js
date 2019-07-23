@@ -54,6 +54,17 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             use: ["babel-loader", "eslint-loader"]
+          },
+          {
+            test: /\.hbs$/,
+            loader: "handlebars-loader"
+          },
+          {
+            test: /\.svg$/,
+            include: [
+              path.resolve(config.get('paths.theme.src.assets'), 'static')
+            ],
+            loader: 'raw-loader'
           }
         ]
       }
