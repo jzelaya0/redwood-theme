@@ -25,8 +25,8 @@ class Drawer {
    * @param {string} options.position - Accepts "top", "right", "bottom", "left"
    * @param {string} options.openBtn - Selector that opens the drawer
    * @param {string} options.closeBtn - Selector for closing the drawer
-   * @param {string} options.onDrawerOpen - Callback to run after drawer opens
-   * @param {string} options.onDrawerClose - Callback to run after drawer closes
+   * @param {function} options.onDrawerOpen - Callback to run after drawer opens
+   * @param {function} options.onDrawerClose - Callback to run after drawer closes
   */
   constructor(id, options) {
     const drawer = document.getElementById(id);
@@ -104,6 +104,7 @@ class Drawer {
 
     // Dispatch drawer open event
     if (this.drawerOpenedEvt) {
+      this.options.onDrawerOpen();
       document.dispatchEvent(this.drawerOpenedEvt);
     }
 
@@ -127,6 +128,7 @@ class Drawer {
 
     // Dispatch drawer open event
     if (this.drawerClosedEvt) {
+      this.options.onDrawerClose();
       document.dispatchEvent(this.drawerClosedEvt);
     }
 
@@ -143,21 +145,19 @@ class Drawer {
     if (typeof this.options.onDrawerOpen === 'function') {
       this.drawerOpenedEvt = new CustomEvent('drawerOpened', {
         detail: {
-          position: this.position,
+          position: this.options.position,
           drawerId: this.selectors.drawer.id,
         },
       });
-      document.addEventListener('drawerOpened', this.options.onDrawerOpen);
     }
 
     if (typeof this.options.onDrawerClose === 'function') {
       this.drawerClosedEvt = new CustomEvent('drawerClosed', {
         detail: {
-          position: this.position,
+          position: this.options.position,
           drawerId: this.selectors.drawer,
         },
       });
-      document.addEventListener('drawerClosed', this.options.onDrawerClose);
     }
   }
 
