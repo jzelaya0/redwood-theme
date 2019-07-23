@@ -11,10 +11,14 @@
     "babel/no-invalid-this": 0,
     "import/no-anonymous-default-export": 0,
     "import/no-unresolved": ["error", {"ignore": ["^jquery"]}],
+    "import/extensions": ["error", "never", { "svg": "always", "hbs": "always" }],
     "no-alert": 0,
     "no-console": 0,
     "no-new": 0,
-    "node/shebang": 0
+    "node/shebang": 0,
+    "promise/always-return": 0,
+    "id-length": 0,
+    "radix": 0
   },
   "globals": {
     "document": true,
