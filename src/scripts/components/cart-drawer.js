@@ -223,7 +223,7 @@ class AjaxCart {
         cartData.total_discount === 0
           ? 0
           : `${theme.strings.cartSavings} ${formatMoney(
-              cart.total_discount,
+              cartData.total_discount,
               theme.moneyFormat,
             )}`,
       totalCartDiscountApplied: cartData.total_discount !== 0,
