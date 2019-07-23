@@ -1,0 +1,56 @@
+/***************** SASS Placeholders *****************/
+
+// JS Qty Selectors
+%js-qty {
+  position: relative;
+  margin-bottom: 1em;
+  max-width: rem(100px);
+  min-width: rem(75px);
+  overflow: visible;
+
+  input {
+    display: block;
+    background: none;
+    text-align: center;
+    width: 100%;
+    padding: rem(5px) rem(25px);
+    margin: 0;
+  }
+
+  .icon {
+    width: rem(12px);
+    height: rem(12px);
+  }
+}
+
+%js-qty__adjust {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  border: 0 none;
+  padding: 0 rem(8px);
+  background: none;
+  text-align: center;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    color: $color-body-text;
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}
+
+%js-qty__adjust--plus {
+  right: 0;
+  border-left: 1px solid $color-border;
+}
+
+%js-qty__adjust--minus {
+  left: 0;
+  border-right: 1px solid $color-border;
+}

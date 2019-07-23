@@ -16,8 +16,10 @@
 @import './utilities/mixins';
 @import './utilities/functions';
 @import './utilities/variables';
+@import './utilities/placeholders';
 
 // Core
+@import './core/animations';
 @import './core/forms';
 @import './core/helpers';
 @import './core/layout';
@@ -30,6 +32,7 @@
 
 // Layout
 @import './layout/mobile-nav';
+@import './layout/ajax-cart';
 
 // Components
 @import './components/buttons';

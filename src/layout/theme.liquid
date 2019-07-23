@@ -41,7 +41,12 @@
       strings: {
         addToCart: {{ 'products.product.add_to_cart' | t | json }},
         soldOut: {{ 'products.product.sold_out' | t | json }},
-        unavailable: {{ 'products.product.unavailable' | t | json }}
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        cart_empty: {{ 'cart.general.empty' | t | json }},
+        cart_note: {{ 'cart.general.note' | t | json }},
+        cart_subtotal: {{ 'cart.general.subtotal' | t | json }},
+        cart_shipping_at_checkout: {{ 'cart.general.shipping_at_checkout' | t | json }},
+        cart_checkout: {{ 'cart.general.checkout' | t | json }},
       },
       moneyFormat: {{ shop.money_format | json }}
     };
@@ -75,6 +80,26 @@
     </div>
     <div class="drawer__body">
       {%- include 'site-nav-mobile' -%}
+    </div>
+  </div>
+
+  {% comment %}
+    Cart Drawer
+  {% endcomment %}
+  <div id="CartDrawer" class="cart-drawer drawer drawer--right">
+    <div class="drawer__header">
+      <div class="drawer__title">
+        {{ 'cart.general.title' | t }}
+      </div>
+      <button type="button" class="drawer__close-btn js-drawer-close">
+        {%- include 'icon-close' -%}
+        <span class="icon-fallback-text">{{ 'layout.navigation.collapse' | t }}</span>
+      </button>
+    </div>
+    <div class="drawer__body">
+      <div id="CartContainer">
+        <!-- Content loaded from Shopify Cart API -->
+      </div>
     </div>
   </div>
 

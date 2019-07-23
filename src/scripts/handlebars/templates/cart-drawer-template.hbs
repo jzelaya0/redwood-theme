@@ -1,0 +1,90 @@
+<form action="/cart" method="post" novalidate class="cart ajaxcart">
+  <div class="ajaxcart__inner">
+    {{#items}}
+      <div class="ajaxcart__product">
+        <div class="ajaxcart__row" data-line="{{line}}" data-key="{{key}}">
+          <div class="row row--half-gutters">
+            <div class="col col--1-3">
+              <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt="{{name}}"></a>
+            </div>
+            <div class="col col--2-3">
+              <p>
+                <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
+                {{#if variation}}
+                  <span class="ajaxcart__product-meta">{{variation}}</span>
+                {{/if}}
+                {{#properties}}
+                  {{#each this}}
+                    {{#if this}}
+                      <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                    {{/if}}
+                  {{/each}}
+                {{/properties}}
+              </p>
+              {{#if vendor}}
+              <p>
+                <span class="ajaxcart__product-meta">{{ vendor }}</span>                
+              </p>
+              {{/if}}
+
+              <div class="row row--half-gutters align-items-center">
+                <div class="col col--1-2">
+                  <div class="ajaxcart__qty">
+                    <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus" data-key="{{key}}" data-qty="{{itemAdd}}" data-line="{{line}}">
+                      {{{ @root.iconPlus }}}
+                    </button>
+                    <input type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-key="{{key}}" data-line="{{line}}" aria-label="quantity" pattern="[0-9]*" autocomplete="off">
+                    <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus" data-key="{{key}}" data-line="{{line}}" data-qty="{{itemMinus}}">
+                      {{{ @root.iconMinus }}}
+                    </button>
+                  </div>
+                </div>
+                <div class="col col--1-2 text-right">
+                  {{#if discountsApplied}}
+                    <small class="ajaxcart-item__price-strikethrough"><s>{{{originalLinePrice}}}</s></small>
+                    <br><span>{{{linePrice}}}</span>
+                  {{else}}
+                    <span>{{{linePrice}}}</span>
+                  {{/if}}
+                </div>
+                {{#if discountsApplied}}
+                  <div class="row">
+                    <div class="col text-right">
+                      {{#each discounts}}
+                        <small class="ajaxcart-item__discount">{{ this.title }}</small><br>
+                      {{/each}}
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/items}}
+
+    <div class="ajaxcart__note">
+      <label for="CartSpecialInstructions">{{strings.note}}</label>
+      <textarea name="note" id="CartSpecialInstructions">{{ note }}</textarea>
+    </div>
+  </div>
+  <div class="ajaxcart__footer">
+    <div class="row">
+      <div class="col col--2-3">
+        <p class="pb-3">{{strings.subtotal}}</p>
+      </div>
+      <div class="col col--1-3 text-right">
+        <p class="pb-3">{{{totalPrice}}}</p>
+      </div>
+    </div>
+    {{#if totalCartDiscount}}
+      <p class="ajaxcart__savings">
+        <em>{{{totalCartDiscount}}}</em>
+      </p>
+    {{/if}}
+    <p>{{{strings.shippingAtCheckout}}}</p>
+    <button type="submit" class="btn ajaxcart__checkout" name="checkout">
+      {{strings.checkout}}
+    </button>
+  </div>
+</form>

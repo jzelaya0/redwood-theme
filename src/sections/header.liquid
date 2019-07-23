@@ -52,10 +52,10 @@
       <span class="icon-fallback-text">{{ 'layout.navigation.toggle' | t }}</span>
     </a>
 
-    <a href="/cart">
+    <a href="/cart" class="js-drawer-open-right">
       {% include 'icon-cart' %}
       {{ 'layout.cart.title' | t }}
-      ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+      <span data-cart-count>{{ cart.item_count }}</span>
     </a>
 
     {% if shop.customer_accounts_enabled %}

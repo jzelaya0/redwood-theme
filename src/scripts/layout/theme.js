@@ -4,8 +4,11 @@ import 'lazysizes/plugins/rias/ls.rias';
 import 'lazysizes/plugins/bgset/ls.bgset';
 import 'lazysizes';
 import 'lazysizes/plugins/respimg/ls.respimg';
+import 'unfetch/polyfill';
+import 'es6-promise/auto';
 
 import '@/scripts/components/mobile-nav';
+import '@/scripts/components/cart-drawer';
 
 import '../../styles/theme.scss';
 import '../../styles/theme.scss.liquid';
