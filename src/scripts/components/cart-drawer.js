@@ -320,11 +320,10 @@ class AjaxCart {
   }
 
   adjustCartQty(evt) {
-    if (!evt.target.matches(selectors.ajaxCartQtyAdjust)) {
-      return;
-    }
-
-    if (this.state.cartIsUpdating) {
+    if (
+      !evt.target.matches(selectors.ajaxCartQtyAdjust) ||
+      this.state.cartIsUpdating
+    ) {
       return;
     }
 
@@ -337,7 +336,7 @@ class AjaxCart {
   adjustCartQtyInput(evt) {
     if (
       !evt.target.matches(selectors.ajaxCartQtyNumAdjust) ||
-      this.state.isUpdating
+      this.state.cartIsUpdating
     ) {
       return;
     }
