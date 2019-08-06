@@ -165,14 +165,14 @@ class Drawer {
   addPageEvents() {
     this.selectors.body.addEventListener('keyup', this);
     this.selectors.pageContainer.addEventListener('click', this);
-    this.selectors.body.addEventListener('touchmove', this, {passive: false});
+    this.selectors.pageContainer.addEventListener('touchmove', this, {passive: false});
   }
 
   /** Detaches event listeners from body element */
   removePageEvents() {
     this.selectors.body.removeEventListener('keyup', this);
     this.selectors.pageContainer.removeEventListener('click', this);
-    this.selectors.body.removeEventListener('touchmove', this);
+    this.selectors.pageContainer.removeEventListener('touchmove', this);
   }
 
   /** Looks for the correct event type. For removal of event handlers bound with 'this' */
