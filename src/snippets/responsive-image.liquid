@@ -12,6 +12,7 @@
     - image: {Object} Image object
     - image_class: {String} class name of the <img />
     - image_attributes: {String}  additional HTML attributes of the <img />
+    - image_alt: {String}  custom image alt for the <img />
     - wrapper_class: {String} class name of the <div> wrapper
     - wrapper_attributes: {String} additional HTML attributes of the <div> wrapper
 
@@ -93,7 +94,7 @@
     data-aspectratio="{{ image.aspect_ratio }}"
     data-sizes="auto"
     tabindex="-1"
-    alt="{{ image.alt | escape }}"
+    alt="{{ image_alt | default: image.alt }}"
     {{ image_attributes }}
   >
 </div>
