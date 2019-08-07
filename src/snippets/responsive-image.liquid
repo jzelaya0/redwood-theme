@@ -1,5 +1,5 @@
 {%- comment -%}
-    It creates a style tag and it restricts an image from growing larger than its max resolution.
+    It creates a style tag and it restricts an image from growing larger than its max resolution if both max-width & max-height is specified
 
     Dependencies:
     - Lazysizes plugin (https://github.com/aFarkas/lazysizes) which enable responsive image with faster load time and better performance.
@@ -27,6 +27,15 @@
 {%- assign default_max_height = max_height | default: image.height -%}
 
 <style>
+{%- unless max_width != blank or max_height != blank -%}
+  #ImageWrapper-{{ image.id }}-{{ responsive_image_counter }}::before {
+    {%- comment -%}
+    When you change the window screen width, we want to make sure that the container's size is proportionally calculated.
+    Note regarding padding percentage: The percentage is calculated with respect to the width of the generated box's containing block (source: http://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#padding-properties)
+    {%- endcomment -%}
+    padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;
+  }
+{%- else -%}
   {%- comment -%}
     The image aspect ratio tells us the orientation of the image:
     - less than 1.0 is portrait
@@ -34,10 +43,10 @@
     - greater than 1.0 is landscape
   {%- endcomment -%}
   {%- if image.aspect_ratio <= 1 -%}
-    {%- assign max_height_image = image.height | at_most: default_max_height -%}
+    {%- assign max_height_image = default_max_height | at_most: image.height -%}
     {%- assign max_width_image = max_height_image | times: image.aspect_ratio -%}
   {%- else -%}
-    {%- assign max_width_image = image.width | at_most: default_max_width -%}
+    {%- assign max_width_image = default_max_width | at_most: image.width -%}
     {%- assign max_height_image = max_width_image | divided_by: image.aspect_ratio -%}
   {%- endif -%}
 
@@ -56,6 +65,7 @@
     {%- endcomment -%}
     padding-top:{{ max_height_image | divided_by: max_width_image | times: 100}}%;
   }
+{%- endunless -%}
 </style>
 
 {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
