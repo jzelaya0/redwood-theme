@@ -22,16 +22,18 @@
 
 {%- comment -%} Added incremental number to avoid conflict styling code when the same images are using this snippet {%- endcomment -%}
 {%- capture responsive_image_counter %}{% increment responsive_image_counter %}{% endcapture -%}
+{%- capture image_id_extension -%}{%- if section -%}-{{ section.id | handleize }}{%- endif -%}{%- if block.id -%}-{{ block.id }}{%- endif -%}{%- endcapture -%}
+{%- capture image_wrapper_id -%}ImageWrapper{{ image_id_extension }}-{{ image.id }}-{{ responsive_image_counter }}{%- endcapture -%}
+{%- capture image_id -%}Image{{ image_id_extension }}-{{ image.id }}-{{ responsive_image_counter }}{%- endcapture -%}
 
 {%- assign default_max_width = max_width | default: image.width -%}
 {%- assign default_max_height = max_height | default: image.height -%}
 
 <style>
 {%- unless max_width != blank or max_height != blank -%}
-  #ImageWrapper-{{ image.id }}-{{ responsive_image_counter }}::before {
+  #{{ image_wrapper_id }}::before {
     {%- comment -%}
     When you change the window screen width, we want to make sure that the container's size is proportionally calculated.
-    Note regarding padding percentage: The percentage is calculated with respect to the width of the generated box's containing block (source: http://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#padding-properties)
     {%- endcomment -%}
     padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;
   }
@@ -50,15 +52,15 @@
     {%- assign max_height_image = max_width_image | divided_by: image.aspect_ratio -%}
   {%- endif -%}
 
-  #Image-{{ image.id }}-{{ responsive_image_counter }} {
+  #{{ image_id }} {
     max-width: {{ max_width_image }}px;
     max-height: {{ max_height_image }}px;
   }
-  #ImageWrapper-{{ image.id }}-{{ responsive_image_counter }} {
+  #{{ image_wrapper_id }} {
     max-width: {{ max_width_image }}px;
   }
 
-  #ImageWrapper-{{ image.id }}-{{ responsive_image_counter }}::before {
+  #{{ image_wrapper_id }}::before {
     {%- comment -%}
       When you change the window screen width, we want to make sure that the container's size is proportionally calculated.
       Note regarding padding percentage: The percentage is calculated with respect to the width of the generated box's containing block (source: http://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#padding-properties)
@@ -82,8 +84,8 @@
 {%- endcapture -%}
 {%- assign image_widths = image_widths | strip_newlines -%}
 
-<div id="ImageWrapper-{{ image.id }}-{{ responsive_image_counter }}" data-image-id="{{ image.id }}" class="responsive-image__wrapper {{ wrapper_class }}" {{ wrapper_attributes }}>
-  <img id="Image-{{ image.id }}-{{ responsive_image_counter }}"
+<div id="{{ image_wrapper_id }}" data-image-id="{{ image.id }}" class="responsive-image__wrapper {{ wrapper_class }}" {{ wrapper_attributes }}>
+  <img id="{{ image_id }}"
     class="responsive-image__image lazyload {{ image_class }}"
     src="{{ image | img_url: '300x' }}"
     data-src="{{ img_url }}"
