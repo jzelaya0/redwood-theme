@@ -1,0 +1,11 @@
+body {
+  background: #eeeeee;
+}
+
+.cover-main img {
+  max-height: 50vh;
+}
+
+.cover {
+  background: linear-gradient(45deg, #bf6f60, transparent) !important;
+}
