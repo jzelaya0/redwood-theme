@@ -34,6 +34,18 @@ It is recommended that the typography variable values be modified to best suit y
 * Font families
 * Font weights
 
+## SASS Helper Functions
+SASS Helper functions can be found here:
+```
+project   
+│
+└───src
+│   │
+│   └───styles
+│       │   
+│       └─── tools
+```
+
 ### Spacing
 The **$spacing-data** map consists of 7 values and is used for the **spacing()** helper function and CSS margin/padding helper classes. These values are meant to serve as base sizes for spacing. You can add more sizes by adding to the **$spacing-data** map variable.
 
@@ -55,16 +67,17 @@ $spacing-data: (
 
 ```
 
-## SASS Helper Functions
-SASS Helper functions can be found here:
-```
-project   
-│
-└───src
-│   │
-│   └───styles
-│       │   
-│       └─── tools
+```scss
+// Examples
+p {
+  padding-bottom: spacing(3); // => 15px
+  margin-top: spacing(0); // => 0px
+}
+
+div {
+  padding: spacing(6) 0 ; // => 30px 0px 30px 0
+  margin:  0 spacing(2) spacing(1); // 0 10px 5px 10px
+}
 ```
 
 ### REM, EM and PX
@@ -97,45 +110,6 @@ All three functions accept either px, rem, or em values
 }
 ```
 
-### Spacing
-The spacing function uses the **$spacing-data** map (found in variables.scss.liquid).
-
-It accepts the following arguments as values:
-* none
-* extra-tight
-* tight
-* base
-* loose
-* extra-loose
-* super-loose
-
-The computed pixel values result as multiples of whatever **$spacing-unit** is set to.
-
-```scss
-/***
- * Examples:
- * Assuming $spacing-unit is equal to 5px
-*/
-p {
-  padding-bottom: spacing(); // => 15px
-  margin-top: spacing(none); // => 0px
-}
-
-div {
-  padding: spacing(super-loose) 0 ; // => 30px 0px 30px 0
-  margin:  0 spacing(tight) spacing(extra-tight); // 0 10px 5px 10px
-}
-```
-
-### Color
-Accepts a color value as its first argument and opacity as its second.
-```scss
-$myColor: #000;
-div {  
-  background-color: color($mycolor, 0.6); // => rgba(0,0,0,0.6)
-}
-
-```
 
 ### Typography
 **font-size()**
